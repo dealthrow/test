@@ -1,0 +1,83 @@
+Insignificant		This module is ancient history. If you use it, be aware that you are mostly on your own when it comes to any sort of community support.
+Unreliable			This module is new or experimental, and is not suitable for production.
+Useful			This module is current, maintained, popular, and recommended.
+Usable			This module works but may be incomplete or unpopular, and/or is not recommended by the authors.
+New			This module is quite new, and its completeness and popularity are difficult to gauge at this time.
+Deprecated		This module has been replaced by something that is considered superior.
+Limited			This module has limitations that may make it unsuitable to your requirements.
+Essential			This module is one you’ll never want to be without.
+
+-------------------FILE STRUCTURE-----------------------------
+
+Configuration Files		include extensions.conf, sip.conf, modules.conf. Located in /etc/asterisk.
+Modules			located in /usr/lib/asterisk/modules.
+Resource Library		
+The Spool			is where Linux stores files that are going to change frequently or will be processed by other processes at a later time.
+			used to store transient items such as voice messages, call recordings, call files, and so forth.
+Logging			
+Dialplan			is the heart of asterisk. All channels that arrive in the system will be passed through the dialplan, which contians the call-flow script that determines how the incoming calls are handled
+
+
+------------INITIAL CONFIGURATION TASKS----------------------------
+
+asterisk.conf		configuration file allows you to tweak various settings that can effect how Asterisk runs as a whole.
+________________________________________________________________________________________________________________________________
+DIRECTORIES SECTION
+
+/etc/asterisk 		The location where the Asterisk configuration files are stored.
+
+/usr/lib/asterisk/ modules	The location where loadable modules are stored.
+
+/var/lib/asterisk 		The base location for variable state information used by various parts of Asterisk.
+			*This includes items that are written out by Asterisk at runtime.
+
+/var/lib/asterisk 		Asterisk will store its internal database in this directory as a file called astdb.
+
+/var/lib/asterisk 		Asterisk will use a subdirectory called keys in this directory as the default location for loading keys for encryption.
+
+/var/lib/asterisk 		This is the base directory for system-provided data, such as the sound files that come with Asterisk.
+
+/var/lib/asterisk/agi-bin		Asterisk will use a subdirectory called agi-bin in this directory as the default location for loading AGI scripts.
+
+/var/spool/asterisk 		The Asterisk spool directory, where voicemail, call recordings, and the call origination spool are stored.
+
+/var/run/asterisk 		The location where Asterisk will write out its UNIX control socket as well as its process ID (PID) file.
+
+/var/log/asterisk 		The directory where Asterisk will store its log files.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------FILES SECTION------------------------------------------------
+
+astctlpermissions 0660 Sets the permissions for the Asterisk control socket.
+
+astctlowner root Sets the owner for the Asterisk control socket.
+
+astctlgroup apache Sets the group for the Asterisk control socket.
+
+astctl asterisk.ctl Sets the filename for the Asterisk control socket. The default is asterisk.ctl
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MODULES.CONF			load them for startup
+
+INDICATION.CONF			DEFINES THE PARAMETERS FOR THE VARIOUS SOUNDS THAT A TELEPHONE SYSTEM MIGHT BE EXPECTED TO PRODUCE, AND ALLOW YOU TO CUSTOMIZE THEM.
+
+
+CDN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

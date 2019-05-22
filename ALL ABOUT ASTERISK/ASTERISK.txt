@@ -1,0 +1,52 @@
+ASTERISK CLI
+
+to debugged log in
+asterisk -rvvvvvvvvvvvvvvvvvvv
+
+SIP	is a signaling protocol used in VoIP communication that allow users to make voice and video calls , mostly modify for free
+	-used to create, modify, and terminate sessions with one or more users
+VoIP 	is a technology that converts your voice into a digital signal, allowing you to make a call directly from a computer, a VoIP phone, or other data-driven devices
+
+
+SIP channel commands
+
+sip show peers					for checking sip connections
+core show channels					to check and monitor the volume of calls
+dahdi show channels					to check and monitor the channels being used
+sip reload 					to reload the sip configuration
+dialplan reload					to reload the dialplan configuration
+reload						to reload the whole asterisk configuration
+
+watch -n -1 "asterisk -rx 'core show channels'" 		to check and monitor the volume of calls real-time
+tail -f /var/log/asterisk/messages | grep UNREACHABLE	to monitor asterisk lgos real-time
+
+"For Checking Logs"
+
+vim /var/log/message	Server Logs
+vim /var/log/mysql/mysqld.log	Mysql Logs
+vim /var/log/asterisk/messages	Asterisk Logs
+
+
+
+
+
+
+
+Link:
+
+
+https://linuxhint.com/install_asterisk_voip_ubuntu/
+
+https://serverfault.com/questions/623268/ubuntu-package-installed-but-files-missing		=CONFIGURE MISSING SIP COMMANDS
+
+https://stackoverflow.com/questions/29608799/linux-asterisk-script-for-test-call
+https://prozukti.wordpress.com/2011/04/29/basic-sip-call-setup-using-asterisk-and-x-lite-3-0/
+
+https://sflphone-doc-security.readthedocs.io/en/latest/02_asterisksflphone/installingasterisk.html
+
+
+http://installion.co.uk/ubuntu/xenial/universe/a/asterisk/uninstall/index.html
+
+
+
+https://www.youtube.com/watch?v=xkJVM-HVbnA

@@ -1,0 +1,10 @@
+Asterisk 11 LTS  versions
+
+
+wget http://downloads.asterisk.org/pub/telephony/certified-asterisk/asterisk-certified-13.21-current.tar.gz
+apt-get install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev uuid-dev
+tar -zxvf asterisk-certified-13.21-current.tar.gz
+cd asterisk-certified-13.21-cert3
+./configure
+
+alw,ulaw			=standard codecs for ISDN

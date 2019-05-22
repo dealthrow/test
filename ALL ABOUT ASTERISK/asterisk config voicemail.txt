@@ -1,0 +1,102 @@
+SIP.CONF
+[general]
+register => 1000@192.168.1.182
+register => 1235@192.168.1.62
+
+[1000]
+type=friend
+secret=1234
+context=internal
+host=dynamic
+mailbox=1000@VoiceMail
+
+[1235]
+type=friend
+context=internal
+secret=1235
+host=dynamic
+mailbox=1235@VoiceMail
+
+
+
+EXTENSIONS.CONF
+[internal]
+;OUTBOUND CALLS
+exten => 1000,1,Dial(SIP/1000)
+exten => 1000,2,VoiceMail(1000@VoiceMail)
+exten => 1000,3,Hangup()
+
+
+[internal]
+;OUTBOUND CALLS
+exten => 1235,1,Dial(SIP/1235)
+exten => 1235,2,VoiceMail(1235@VoiceMail)
+exten => 1235,3,Hangup()
+
+exten => 2000,1,VoiceMailMain($(CALLERID(num))@VoiceMail)
+
+
+
+
+VOICEMAIL.CONF
+[VoiceMail]
+1000 => 1234,deds div,eds@example.com
+1235 => 1235,grim dead,grim@example.com
+
+TO TAKE EFFECT:
+cli command:
+dialplan reload
+dialplan show
+!clear
+
+FOR PLAYBACK:
+
+[internal]
+;OUTBOUND CALLS
+exten => 1000,1,NoOp(First Line)
+exten => 1000,n,NoOp(Second Line)
+exten => 1000,n,Playback(tt-monkeys)
+exten => 1000,n,Dial(SIP/1000)
+exten => 1000,n,Hangup()
+
+exten => 1235,1,NoOp(First Line)
+exten => 1235,n,NoOp(Second Line)
+exten => 1235,n,Playback(tt-monkeys)
+exten => 1235,n,Dial(SIP/1235)
+exten => 1235,n,Hangup()
+________________________________________________
+starwars
+add this in indication.conf files
+[starwars](us)
+description = Star Wars Theme Song
+ring = 262/400,392/500,0/100,349/400,330/400,294/400,524/400,392/500,0/100,349/400,330/400,294/400,524/400,392/500,0/100,349/400,330/400,349/400,294/500,0/2000
+then add new diaplan configuration 
+exten => 1235,1,Answer
+exten => 1235,n,NoOp(First Line)
+exten => 1235,n,Set(CHANNEL(tonezone)=starwars)
+exten => 1235,n,Dial(SIP/deds)
+exten => 1235,n,VoiceMail(1235@VoiceMail)
+exten => 1235,n,Hangup()
+
+
+
+
+
+
+country code area code
++
+N 2-9
+x 0-9
+z 1-9
+
+
+63 Country code
++63 make contact
+
+
+1digit manila
+32 Cebu
+33 bacolod
+
+00 international call
+0 national long distance

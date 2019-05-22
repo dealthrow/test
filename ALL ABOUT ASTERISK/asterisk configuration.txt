@@ -1,0 +1,43 @@
+for Sip.conf
+register => deds:1234@192.168.1.182
+
+[deds]
+type=friend
+username=deds
+secret=1234
+host=dynamic
+
+
+
+For extensions
+exten => 1234,1,Dial(SIP/deds)
+exten => 1234,1,Answer()
+exten => 1234,n,Noop(Example call inbound)
+exten => 1234,n,Playback(hello-world)
+exten => 1234,n,Hangup()
+
+
+
+Create a file name /tmp/example.call such as:
+
+Channel: SIP/peerdevice/1234
+Application: Playback
+Data: silence/1&tt-weasels 
+And then copy that file and move it into the asterisk outgoing spool, such as:
+
+cp /tmp/example.call /tmp/example.call.new
+mv /tmp/example.call.new /var/spool/asterisk/outgoing
+You'll notice at the Asterisk CLI it will originate a new call.
+
+You can make another asterisk box answer the call automatically by saying to answer it in the dialplan, e.g. If you have another device SIP/peerdevice, and you're dialing 1234 per my example, in your dialplan:
+
+[somecontext]
+exten =>       1234,1,Answer()
+same =>       n,Noop(Example call inbound)
+same =>       n,Playback(hello-world)
+same =>       n,Hangup()
+
+---------------------------------------------------------------------------------------------------------
+Dial using your server:
+asterisk -rx "originate SIP/deds application Playback hello-world"
+---------------------------------------------------------------------------------------------------------
